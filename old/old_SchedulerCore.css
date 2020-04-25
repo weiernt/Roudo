@@ -1,0 +1,21 @@
+.calendarCell {
+    display:inline-block;
+    width:12%;
+    height:75px;
+    background:#ccc;
+    margin: 5px 2px 5px 2px;
+    padding: 5px;
+}
+
+.calendarCell:hover{
+    background-color: #d9d8d0;
+}
+
+#datepicker, #enterEventDescription{
+    display: inline-block;
+    width:35%;
+    height: 100pxl
+    background: #999;
+    margin:15px;
+    padding:30px;
+}
