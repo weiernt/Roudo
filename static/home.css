@@ -11,15 +11,20 @@ body{
 
 .bottom-left {
     position: absolute;
-    bottom: 10px;
-    left: 24px;
+    bottom: 8px;
+    left: 16px;
 }
 
-/* .masthead { */
-  /* height: 100vh; */
-  /* min-height: 500px; */
-  /* background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080'); */
-  /* background-size: cover; */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-/* } */
+#media-body-just-completed{
+    flex-grow: 1;
+    color:green;
+    font-size: smaller;
+}
+
+#media-body-activity {
+    width: 100px;
+}
+
+#media-body-time {
+    float:right ;
+}

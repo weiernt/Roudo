@@ -10,8 +10,6 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href={{ url_for("static", filename="home.css")}}>
-
-
 	{% if title %}
 		<title> Roudo - {{ title }} </title>
 	{% else %}
@@ -37,10 +35,10 @@ body {background-color: lightgrey;}
         <a class="nav-link" href={{ url_for("home")}}> Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href={{ url_for("calendar") }}> Calendar </a>
+        <a class="nav-link" href="#"> Calendar </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">About</a>
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="form-inline mt-2 mt-md-2">
@@ -55,70 +53,108 @@ body {background-color: lightgrey;}
       <div class="row">
         <div class="col-md-9 pl-n5">
 					<div class="container">
-						<img src={{ url_for("static", filename="home_banner.jpg") }} class="img-fluid" alt="landscape_banner" style="width:100%;height:300px">
+						<img src={{ url_for("static", filename="Roudo_Banners_26_4_20_new.png") }} class="img-fluid" alt="roudo_home_banner" style="width:150%;height:400px">
+						<div class="bottom-left", style="color:grey"> <h1>No better time than now.</h1> </div>
+					</div>
+				
+					<div class="my-circle">
+						<div class="media mt-4 bg-dark text-light" ><H3>Choose group: &nbsp; &nbsp; &nbsp;</H3>
+							<select id="The Three Horsemen">
+								<option value="The Three Horsemen">The Three Horsemen</option>
+								<option value="COMP10001">COMP10001</option>
+								<option value="Berkley Boys">Berkley Boys</option>
+							  </select>
+						</div>
+						
+						<div class="media mt-0 bg-dark text-light"><H5 style="color: lemonchiffon;">The Three Horsemen</H5></div>
+						<div class="media mt-2 rounded bg-light text-dark">
+							<div class="media-left">
+								<img src={{ url_for("static", filename="profilepic2.1.jpg") }} class="rounded-circle img-fluid" style="max-height:72%;max-width:72%;">
+								<p style=:"text-dark">Rachel Li</p>
+							</div>
+							<div class="media-body">
+								<div id="media-body just-completed"><p style="color: rgb(124, 175, 46);">  just completed </p></div>
+								<div id="media-body activity"><H5>  Calculus II Chapter 3 exercises </H5></div>
+								<div id="media-body-time"><p>  31 seconds ago</p></div>
+							</div>
+						</div>
+						
+						<div class="media mt-2 rounded bg-light text-dark">
+							<div class="media-left">
+								<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
+								<p style:"text-dark">Jeff Higgs</p>
+								
+							</div>
+							<div class="media-body">
+								<div id="media-body-just-completed"><p style="color: rgb(124, 175, 46);"> just completed </p></div>
+								<div id="media-body-activity"><b><H5> meditation &#129496;</H5></b></div>
+								<div id="media-body-time"><p>45 seconds ago</p></div>
+							</div>
+						</div>
+						
+						<div class="media mt-2 rounded bg-light text-dark">
+							<div class="media-left">
+								<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
+								<p style:"text-dark">Ronald Parks</p>
+							</div>
+							<div class="media-body">
+								<div id="media-body-just-completed"><p style="color: rgb(124, 175, 46);"> just completed </p></div>
+								<div id="media-body-activity"><b><H5> Sunday run with Milo!! &#128021;</H5></b></div>
+								<div id="media-body-time"><p>21 minutes ago</p></div>
+							</div>
+						</div>	
+				</div>
+				
 
-						<div class="bottom-left"> <h1>Home Page</h1> </div>
-					</div>
-					
-					<div class="media mt-4 rounded bg-light text-dark">
-						<div class="media-left">
-							<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
-						</div>
+				<div class="Choose Roudo circle">
+					<div class="media mt-4 bg-dark text-light" ><H3>Stats:</H3></div>
+					<div class="media mt-0 bg-dark text-light"><H5 style="color: lemonchiffon;">The Three Horsemen</H5></div>
+					<div class="media mt-0 rounded bg-light text-dark">
 						<div class="media-body">
-							<!-- <h1> Finished an assignment! </h1> -->
-							<p> Finished an assignment, and you should too! </p>
-						</div>
+							<H5 style="color:lightcoral;">is building a strawberry cake! &#127874;</H5>
+						</div>	
 					</div>
-					
-					<div class="media mt-4 rounded bg-light text-dark">
-						<div class="media-left">
-							<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
-						</div>
-						<div class="media-body">
-							<!-- <h1> Meditation </h1> -->
-							<p> Meditated to improve mental health! </p>
-						</div>
+					<div class="media mt-0 rounded bg-light text-dark">
+						<p style="color:black;">&#129351 Jeff is leading with 671g of flour!</p>	
 					</div>
-					
-					<div class="media mt-4 rounded bg-light text-dark">
-						<div class="media-left">
-							<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
-						</div>
-						<div class="media-body">
-							<!-- <h1> Meditation </h1> -->
-							<p> Exercised for 1 hour! Staying active like you should </p>
-						</div>
+					<div class="media mt-0 bg-light text-dark">
+						<p style="color:black;">&#129352 Rachel is contributing 2.02 eggs! &#129370;&#129370;</p>
 					</div>
-					
+					<div class="media mt-0 bg-light text-dark">
+						<p style="color:black;">&#129353 Ronald is contributing 1.23 strawberries! &#127827;</p>	
+					</div>
+				</div>
+
         </div>
 				
 				
         <div class="col-md-3 pr-n5">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
+          	<div class="content-section">
             <p class='text-muted'>
               <ul class="list-group">
+				<li class="list-group-item list-group-item-dark">Roudo</li>
                 <li class="list-group-item list-group-item-light">Latest Posts</li>
                 <li class="list-group-item list-group-item-light">Announcements</li>
                 <li class="list-group-item list-group-item-light">Calendars</li>
                 <li class="list-group-item list-group-item-light">etc</li>
               </ul>
             </p>
-          </div>
-					<div class="container">
-							<a class="twitter-timeline m-0" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-					</div>
+          	</div>
+			<div class="container">
+					<a class="twitter-timeline m-0" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+			</div>
         </div>
       </div>
 	</main>
 	<!-- <div class='container rounded mt-0'>	 -->
 	<!-- </div> -->
 	
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-	<!-- <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> -->
+	
 
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+	<!-- <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> -->
 </html>

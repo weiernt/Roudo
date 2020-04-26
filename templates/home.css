@@ -14,3 +14,17 @@ body{
     bottom: 8px;
     left: 16px;
 }
+
+#media-body-just-completed{
+    flex-grow: 1;
+    color:green;
+    font-size: smaller;
+}
+
+#media-body-activity {
+    width: 100px;
+}
+
+#media-body-time {
+    float:right;
+}
