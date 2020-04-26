@@ -1,0 +1,4 @@
+Only place images, css, js etc which are needed to be static in the static folder.
+- They can then be accessed by either "src=/static/...." or "src=static/..." or {% url_for("static", filename="style.css") %}
+
+- can still apply own .css to overwrite classes obtained from bootstrap.

@@ -1,0 +1,25 @@
+body{
+    background-color: whitesmoke;
+    font-family: 'Baloo Bhaina 2', cursive;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.bottom-left {
+    position: absolute;
+    bottom: 10px;
+    left: 24px;
+}
+
+/* .masthead { */
+  /* height: 100vh; */
+  /* min-height: 500px; */
+  /* background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080'); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+/* } */
