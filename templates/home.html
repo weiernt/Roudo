@@ -1,12 +1,35 @@
 {% extends 'layouts.html' %}
 {% block content %}
-	<h1> Home Page </h1>
-	<p> entry by </p>
-	
-	<!-- over here place the iframe -->
-	
-	
-	<a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<head>
+	<div class="container">
+		<img src="../images_and_graphics/mountain_banner.jpg" alt="landscape_banner" style="width:100%;height:300px">
+		<div class="bottom-left">
+			<h1>Home Page </h1>
+			<p> entry by </p>
+		</div>
+	  </div>
+</head>
+<body>
+	<div class="">
 
+	</div>
+	<div class="userCalendar">
+		<h2>My Schedule today:</h2>
+		<!-- over here place the iframe -->
+		<div id="userCalendar-frame">
+			<iframe src="https://calendar.google.com/calendar/b/0/embed?height=600&amp;wkst=1&amp;bgcolor=%234285F4&amp;ctz=Australia%2FMelbourne&amp;src=dnlrbW9rQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=Y2xhc3Nyb29tMTExMjAwMjE3MDgyMjY5NjAwODU3QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=Y2xhc3Nyb29tMTA3MTQzMzcxMDI0OTkxOTY2NzE1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=ZW4uYXVzdHJhbGlhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%23137333&amp;color=%23202124&amp;color=%230B8043" style="float:center; border:solid 1px #777"; width="800"; height="600"; frameborder="0"; scrolling="no"></iframe>
+		</div>
+	</div>
+
+	<div id="twitterStream">
+		<a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+	</div>
+</body>
+
+</html>
 
 {% endblock content %}
