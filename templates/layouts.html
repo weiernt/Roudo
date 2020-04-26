@@ -9,6 +9,7 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href={{ url_for("static", filename="home.css")}}>
 
 
 	{% if title %}
@@ -25,7 +26,7 @@ body {background-color: lightgrey;}
 
 	<!-- {% block navbar %}{% endblock %} -->
 	<!-- <header class="site-header"> -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
   <a class="navbar-brand" href="#"> Roudo </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +34,7 @@ body {background-color: lightgrey;}
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/home"> Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href={{ url_for("home")}}> Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"> Calendar </a>
@@ -45,15 +46,51 @@ body {background-color: lightgrey;}
     <form class="form-inline mt-2 mt-md-2">
       <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
       <!-- <button class="btn btn-outline-success my-2 my-sm-0" href="/login"> Login </button> -->
-			<a href="/login" class="btn btn-light my-2 my-sm-0 " role="button"> Login </a>
+			<a href={{ url_for("login") }} class="btn btn-light my-2 my-sm-0 " role="button"> Login </a>
     </form>
   </div>
 </nav>
 <!-- </header> -->
-	
-	<div class='container'>	
-		{% block content %}{% endblock %}
-	</div>
+	<main role="main" class="container">
+      <div class="row">
+        <div class="col-md-9 pl-n5">
+					<div class="container">
+						{% block content %}{% endblock %}
+					</div>
+					
+					<div class="media mt-4 rounded bg-light text-dark">
+						<div class="media-left">
+							<img src={{ url_for("static", filename="profilepic1.png") }} class="rounded-circle img-fluid" style="max-height:50%;max-width:50%;">
+						</div>
+						<div class="media-body">
+							<h1> title again </h1>
+							<p> content writings here </p>
+						</div>
+					</div>
+					
+        </div>
+				
+				
+        <div class="col-md-3 pr-n5">
+          <div class="content-section">
+            <h3>Our Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+					<div class="container">
+							<a class="twitter-timeline m-0" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+					</div>
+        </div>
+      </div>
+	</main>
+	<!-- <div class='container rounded mt-0'>	 -->
+	<!-- </div> -->
 	
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
