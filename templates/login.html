@@ -1,5 +1,155 @@
 {% extends "layouts.html" %}
 {% block content %}
+<!DOCTYPE html>
+<head>
+	<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+	<!--<script src="login.js" type="text/javascript"></script> -->
+	<meta name="google-signin-client_id" content=gapi.auth2.init()>
+	<script type="text/javascript">
+		// Client ID and API key from the Developer Console
+		var CLIENT_ID = '537036898657-g1euv6uup6r570174ehdfsod9rfgqv8e.apps.googleusercontent.com';
+		var API_KEY = 'AIzaSyCAczPI9XfAc7rMCIP8MmkW2poxyThTuyY';
+  
+		// Array of API discovery doc URLs for APIs used by the quickstart
+		var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+  
+		// Authorization scopes required by the API; multiple scopes can be
+		// included, separated by spaces.
+		var SCOPES = "https://www.googleapis.com/auth/calendar";
+  
+		var authorizeButton = document.getElementById('authorize_button');
+		var signoutButton = document.getElementById('signout_button');
+		/**
+		 *  On load, called to load the auth2 library and API client library.
+		 */
+		function handleClientLoad() {
+		  gapi.load('client:auth2', initClient);
+		  console.log("got here")
+		}
+  
+		/**
+		 *  Initializes the API client library and sets up sign-in state
+		 *  listeners.
+		 */
+		function initClient() {
+		  gapi.client.init({
+			apiKey: API_KEY,
+			clientId: CLIENT_ID,
+			discoveryDocs: DISCOVERY_DOCS,
+			scope: SCOPES
+		  }).then(function () {
+			// Listen for sign-in state changes.
+			gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+			
+			console.log("HERE")
+
+			// Handle the initial sign-in state.
+			updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+			authorizeButton.onclick = handleAuthClick;
+			signoutButton.onclick = handleSignoutClick;
+		  }, function(error) {
+			appendPre(JSON.stringify(error, null, 2));
+		  });
+		}
+  
+		/**
+		 *  Called when the signed in status changes, to update the UI
+		 *  appropriately. After a sign-in, the API is called.
+		 */
+		function updateSigninStatus(isSignedIn) {
+		  if (isSignedIn) {
+			authorizeButton.style.display = 'none';
+			signoutButton.style.display = 'block';
+			listUpcomingEvents();
+		  } else {
+			authorizeButton.style.display = 'block';
+			signoutButton.style.display = 'none';
+		  }
+		}
+  
+		/**
+		 *  Sign in the user upon button click.
+		 */
+		function handleAuthClick(event) {
+		  gapi.auth2.getAuthInstance().signIn();
+		}
+  
+		/**
+		 *  Sign out the user upon button click.
+		 */
+		function handleSignoutClick(event) {
+		  gapi.auth2.getAuthInstance().signOut();
+		  console.log("bye");
+		}
+  
+		/**
+		 * Append a pre element to the body containing the given message
+		 * as its text node. Used to display the results of the API call.
+		 *
+		 * @param {string} message Text to be placed in pre element.
+		 */
+		function appendPre(message) {
+		  var pre = document.getElementById('content');
+		  var textContent = document.createTextNode(message + '\n');
+		  pre.appendChild(textContent);
+		}
+  
+		/**
+		 * Print the summary and start datetime/date of the next ten events in
+		 * the authorized user's calendar. If no events are found an
+		 * appropriate message is printed.
+		 */
+		function listUpcomingEvents() {
+		  gapi.client.calendar.events.list({
+			'calendarId': 'primary',
+			'timeMin': (new Date()).toISOString(),
+			'showDeleted': false,
+			'singleEvents': true,
+			'maxResults': 10,
+			'orderBy': 'startTime'
+		  }).then(function(response) {
+			var events = response.result.items;
+			appendPre('Upcoming events:');
+  
+			if (events.length > 0) {
+			  for (i = 0; i < events.length; i++) {
+				var event = events[i];
+				var when = event.start.dateTime;
+				if (!when) {
+				  when = event.start.date;
+				}
+				appendPre(event.summary + ' (' + when + ')')
+			  }
+			} else {
+			  appendPre('No upcoming events found.');
+			}
+		  });	
+		}
+		function authorizePipeline() {
+			handleClientLoad();
+			initClient();
+
+			alert("Hello!");
+		}
+	  </script>
+	
+</head>
+
+<body>
+	<div class="googleSignIn" data-onsuccess="onSignIn">
+		<button id="authorize_button" onclick="authorizePipeline();" class="btn btn-success">Sign into Google</button>
+		<button id="signout_button" class="btn btn-primary">Sign Out</button>
+	</div>
+	<script>
+	
+	</script>
+	<pre id="content" style="white-space: pre-wrap;"></pre>
+	
+</body>
+
+</html>
+{% endblock content %}
+
 <!--<form class="form-signin">
 	<div class="container">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -18,11 +168,56 @@
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form> -->
 
-<!DOCTYPE html>
-<head>
-	<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
-</head>
 
+    <!--<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+	</script>
+	
+	<script type="text/javascript">
+		var GoogleAuth; // Google Auth object.
+		function initClient() {
+		gapi.client.init({
+			'apiKey': AIzaSyCNwecVVQrMnhsU-rPEICfamY6_p21X-dI,
+			'clientId': 927438749641-la7bqgduvrjk5vk260qskp8mitm59srf.apps.googleusercontent.com,
+			'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+			'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+		}).then(function () {
+			GoogleAuth = gapi.auth2.getAuthInstance();
+
+			// Listen for sign-in state changes.
+			GoogleAuth.isSignedIn.listen(updateSigninStatus);
+		});
+		}
+
+		function start() {
+        // Initializes the client with the API key and the Translate API.
+        gapi.client.init({
+          'apiKey': AIzaSyCNwecVVQrMnhsU-rPEICfamY6_p21X-dI,
+          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/translate/v2/rest'],
+        }).then(function() {
+          // Executes an API request, and returns a Promise.
+          // The method name `language.translations.list` comes from the API discovery.
+          return gapi.client.language.translations.list({
+            q: 'hello world',
+            source: 'en',
+            target: 'de',
+          });
+        }).then(function(response) {
+          console.log(response.result.data.translations[0].translatedText);
+        }, function(reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      };
+
+      // Loads the JavaScript client library and invokes `start` afterwards.
+      gapi.load('client', start);
+	
+	// $('#googleLoginBtn').click(function() {
+	// 	window.location.href="";
+	// });
+
+	</script> -->
 
 <!-- <form class="form-signin"> -->
 	<!-- <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
@@ -42,5 +237,3 @@
 
 
 
-
-{% endblock content %}
